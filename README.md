@@ -3,6 +3,7 @@
 ## Introduction
 
 This serves as the main code base for any code used for the 2019 Deep Space Scrimmage.
+This code is at the moment very Work-In-Progress. We plan on implementing a standard arcade drive system with vision autonomous code using the Limelight and maybe motion profiling for movement during the autonomous period.
 
 ## Structure
 
