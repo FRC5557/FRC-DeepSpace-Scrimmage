@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.MotionProfiles.TrapezoidProfile;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -113,6 +114,7 @@ public class Robot extends TimedRobot {
     if (driveCommand != null) {
       driveCommand.start();
     }
+
   }
 
   /**
