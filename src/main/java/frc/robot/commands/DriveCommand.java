@@ -8,6 +8,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.DriveSubsystem;
@@ -33,7 +35,7 @@ public class DriveCommand extends Command {
   protected void execute() {
     // add drive command here
     // first thing it should do is read stick values
-    drive.drive(stick.getX(), stick.getThrottle());
+    drive.drive(stick.getX(), stick.getY());
   }
 
   // Make this return true when this Command no longer needs to run execute()

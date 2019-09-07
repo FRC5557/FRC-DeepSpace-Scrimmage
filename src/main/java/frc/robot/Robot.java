@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.MotionProfiles.MotionProfile;
 import frc.robot.MotionProfiles.TrapezoidProfile;
 
 /**
@@ -34,11 +35,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_oi = new OI();
+    // m_oi = new OI();
     // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    driveCommand = m_oi.driveCommand;
+    MotionProfile m = new MotionProfile();
+    m.autoNotifier.startPeriodic(0.05);
+    // driveCommand = m_oi.driveCommand;
   }
 
   /**
@@ -52,6 +55,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+ 
+  
   }
 
   /**

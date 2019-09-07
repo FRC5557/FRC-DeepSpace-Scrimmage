@@ -24,37 +24,34 @@ import jaci.pathfinder.modifiers.TankModifier;
  */
 public class MotionProfile {
 
-    Encoders encoder;
+    public Encoders encoder;
 
-    SpeedControllerGroup leftMotors, rightMotors;
+    public SpeedControllerGroup leftMotors, rightMotors;
 
-    double maxVel = 9.256463818; // Feet/second
-    double maxAccl = 9.84251969; // Feet/second^2
-    double maxJerk = 196.850394; // Feet/second^3
-    Waypoint[] waypoints = new Waypoint[] { new Waypoint(5, 0, 0) };
-    Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH,
+    public  double maxVel = 9.256463818; // Feet/second
+    public double maxAccl = 9.84251969; // Feet/second^2
+    public double maxJerk = 196.850394; // Feet/second^3
+    public  Waypoint[] waypoints = new Waypoint[] { new Waypoint(5, 0, 0) };
+    public Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH,
             0.05, maxVel, maxAccl, maxJerk);
-    Trajectory trajectory = Pathfinder.generate(waypoints, config);
+            public  Trajectory trajectory = Pathfinder.generate(waypoints, config);
     // The distance between the left and right sides of the wheelbase is 0.6m
-    double wheelbase_width = 0.6;
-    Trajectory left;
-    Trajectory right;
+    public  double wheelbase_width = 0.6;
+    public Trajectory left;
+    public  Trajectory right;
 
     // Create the Modifier Object
-    TankModifier modifier = new TankModifier(trajectory);
+    public  TankModifier modifier = new TankModifier(trajectory);
 
-    Notifier autoNotifier;
+    public Notifier autoNotifier;
 
-    DistanceFollower leftD, rightD;
+    public DistanceFollower leftD, rightD;
 
-    IMU gyro;
+    public IMU gyro;
 
-    public void main() {
-        /**
-         * Based on the examples provided in
-         * https://github.com/JacisNonsense/Pathfinder/wiki/Pathfinder-for-FRC---Java#following-a-trajectory
-         */
+    public RunAuton rAuton;
 
+   public MotionProfile() {
         WPI_TalonSRX leftFrontTalon = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MOTOR);
         WPI_TalonSRX rightFrontTalon = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MOTOR);
         WPI_TalonSRX leftRearTalon = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MOTOR);
@@ -78,13 +75,28 @@ public class MotionProfile {
         autoNotifier = new Notifier(new RunAuton());
     }
 
+
+    public void main() {
+        /**
+         * Based on the examples provided in
+         * https://github.com/JacisNonsense/Pathfinder/wiki/Pathfinder-for-FRC---Java#following-a-trajectory
+         */
+
+       
+    }
+
     class RunAuton implements Runnable {
+
+        public RunAuton() {
+            rAuton = this;
+        }
+
         @Override
         public void run() {
             if (!leftD.isFinished() || !rightD.isFinished()) {
                 double l = leftD.calculate(encoder.getLeftDistanceFeet());
                 double r = rightD.calculate(encoder.getRightDistanceFeet());
-
+                
                 double gyro_heading = gyro.getAngle();
                 double desired_heading = Pathfinder.r2d(leftD.getHeading());
 
