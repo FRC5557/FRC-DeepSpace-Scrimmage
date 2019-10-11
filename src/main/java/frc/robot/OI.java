@@ -26,6 +26,7 @@ public class OI {
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
   public Joystick stick;
+  public Joystick stick2;
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
@@ -41,6 +42,7 @@ public class OI {
 
   public OI() {
     stick = new Joystick(RobotMap.JOYSTICK_PORT);
+    stick2 = new Joystick(RobotMap.JOYSTICK_PORT_2);
 
     placeHatchButton = new JoystickButton(stick, RobotMap.X_BUTTON);
     toggleAutoDrive = new JoystickButton(stick, RobotMap.X_BUTTON);
@@ -58,11 +60,11 @@ public class OI {
 
     // TODO: test this to see if it toggles and such
     // TODO: turn on limelight lights only when in limelight mode
-    toggleAutoDrive.whenPressed(hatchCommand);
-    toggleAutoDrive.cancelWhenPressed(driveCommand);
+    // toggleAutoDrive.whenPressed(hatchCommand);
+    // toggleAutoDrive.cancelWhenPressed(driveCommand);
 
-    toggleControllerDrive.whenPressed(driveCommand);
-    toggleControllerDrive.cancelWhenPressed(hatchCommand);
+    // toggleControllerDrive.whenPressed(driveCommand);
+    // toggleControllerDrive.cancelWhenPressed(hatchCommand);
     // Start the command when the button is released and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());

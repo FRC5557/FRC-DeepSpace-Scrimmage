@@ -19,6 +19,7 @@ public class RobotMap {
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
   public static int JOYSTICK_PORT = 0;
+  public static int JOYSTICK_PORT_2 = 1;
 
   // Motor controllers are mapped here
   public static final int LEFT_REAR_MOTOR = 4; // Encoder on this one, counts down when driving forward
@@ -27,6 +28,8 @@ public class RobotMap {
   public static final int RIGHT_REAR_MOTOR = 1;
 
   public static final int X_BUTTON = 2; // X
+
+  public static final int ELEVATOR_MOTOR = 5;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
