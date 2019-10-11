@@ -27,7 +27,13 @@ public class RobotMap {
   public static final int RIGHT_FRONT_MOTOR = 2;// Encoder on this one, counts up when driving forward
   public static final int RIGHT_REAR_MOTOR = 1;
 
-  public static final int X_BUTTON = 2; // X
+
+  // XBOX CONTROLLER STUFF
+  public static final int X_BUTTON = 3; // X
+  public static final int Y_BUTTON = 4; // X
+  public static final int A_BUTTON = 1; // X
+  public static final int B_BUTTON = 2; // X
+
 
   public static final int ELEVATOR_MOTOR = 5;
 

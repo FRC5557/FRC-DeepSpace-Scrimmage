@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Watchdog;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.DriveTowardsHatchCommand;
@@ -41,30 +43,44 @@ public class OI {
   DriveCommand driveCommand;
 
   public OI() {
+<<<<<<< HEAD
     stick = new Joystick(RobotMap.JOYSTICK_PORT);
     stick2 = new Joystick(RobotMap.JOYSTICK_PORT_2);
+=======
+    // stick = new Joystick(RobotMap.JOYSTICK_PORT);
+    stick = new Joystick(RobotMap.JOYSTICK_PORT) ;
+    
+>>>>>>> ad64a8c3e0dcb8c3260ebc80e73edfdbfb55ace1
 
-    placeHatchButton = new JoystickButton(stick, RobotMap.X_BUTTON);
-    toggleAutoDrive = new JoystickButton(stick, RobotMap.X_BUTTON);
-    toggleControllerDrive = new JoystickButton(stick, RobotMap.X_BUTTON);
+    // placeHatchButton = new JoystickButton(stick, RobotMap.X_BUTTON);
+    toggleAutoDrive = new JoystickButton(stick, RobotMap.A_BUTTON);
+    toggleControllerDrive = new JoystickButton(stick, RobotMap.B_BUTTON);
     // Start the command when the button is pressed and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenPressed(new ExampleCommand());
     // Run the command while the button is being held down and interrupt it once
     // the button is released.
     // button.whileHeld(new ExampleCommand());
-    placeHatchButton.whenPressed(new PlaceHatchCommand());
+    // placeHatchButton.whenPressed(new PlaceHatchCommand());
 
     hatchCommand = new DriveTowardsHatchCommand();
-    driveCommand = new DriveCommand();
+    // driveCommand = new DriveCommand();
 
     // TODO: test this to see if it toggles and such
     // TODO: turn on limelight lights only when in limelight mode
+<<<<<<< HEAD
     // toggleAutoDrive.whenPressed(hatchCommand);
     // toggleAutoDrive.cancelWhenPressed(driveCommand);
 
     // toggleControllerDrive.whenPressed(driveCommand);
     // toggleControllerDrive.cancelWhenPressed(hatchCommand);
+=======
+    toggleAutoDrive.whenPressed(hatchCommand);
+    // toggleAutoDrive.cancelWhenPressed(driveCommand);
+
+    // toggleControllerDrive.whenPressed(driveCommand);
+    toggleControllerDrive.cancelWhenPressed(hatchCommand);
+>>>>>>> ad64a8c3e0dcb8c3260ebc80e73edfdbfb55ace1
     // Start the command when the button is released and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
