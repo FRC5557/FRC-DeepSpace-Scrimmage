@@ -43,14 +43,8 @@ public class OI {
   DriveCommand driveCommand;
 
   public OI() {
-<<<<<<< HEAD
     stick = new Joystick(RobotMap.JOYSTICK_PORT);
     stick2 = new Joystick(RobotMap.JOYSTICK_PORT_2);
-=======
-    // stick = new Joystick(RobotMap.JOYSTICK_PORT);
-    stick = new Joystick(RobotMap.JOYSTICK_PORT) ;
-    
->>>>>>> ad64a8c3e0dcb8c3260ebc80e73edfdbfb55ace1
 
     // placeHatchButton = new JoystickButton(stick, RobotMap.X_BUTTON);
     toggleAutoDrive = new JoystickButton(stick, RobotMap.A_BUTTON);
@@ -68,19 +62,11 @@ public class OI {
 
     // TODO: test this to see if it toggles and such
     // TODO: turn on limelight lights only when in limelight mode
-<<<<<<< HEAD
     // toggleAutoDrive.whenPressed(hatchCommand);
     // toggleAutoDrive.cancelWhenPressed(driveCommand);
 
     // toggleControllerDrive.whenPressed(driveCommand);
     // toggleControllerDrive.cancelWhenPressed(hatchCommand);
-=======
-    toggleAutoDrive.whenPressed(hatchCommand);
-    // toggleAutoDrive.cancelWhenPressed(driveCommand);
-
-    // toggleControllerDrive.whenPressed(driveCommand);
-    toggleControllerDrive.cancelWhenPressed(hatchCommand);
->>>>>>> ad64a8c3e0dcb8c3260ebc80e73edfdbfb55ace1
     // Start the command when the button is released and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());

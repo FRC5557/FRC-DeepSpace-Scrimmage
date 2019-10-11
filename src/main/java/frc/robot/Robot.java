@@ -12,8 +12,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.MotionProfiles.MotionProfile;
+// import frc.robot.MotionProfiles.MotionProfile;
 import frc.robot.MotionProfiles.TrapezoidProfile;
+import frc.robot.commands.DriveCommand;
+import frc.robot.subsystems.DriveSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,12 +37,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // m_oi = new OI();
+    m_oi = new OI();
     // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    MotionProfile m = new MotionProfile();
-    m.autoNotifier.startPeriodic(0.05);
+    // MotionProfile m = new MotionProfile();
+    // m.autoNotifier.startPeriodic(0.05);
     // driveCommand = m_oi.driveCommand;
   }
 
@@ -120,6 +122,9 @@ public class Robot extends TimedRobot {
       driveCommand.start();
     }
 
+    // DriveCommand d = new DriveCommand();
+    // d.start();
+
   }
 
   /**
@@ -127,6 +132,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    // DriveSubsystem.getInstance().drive(m_oi.stick.getX(), m_oi.stick.getY());
     Scheduler.getInstance().run();
   }
 
