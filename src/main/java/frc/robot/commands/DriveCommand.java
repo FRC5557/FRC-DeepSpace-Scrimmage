@@ -31,6 +31,12 @@ public class DriveCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    stick.setXChannel(0);
+		stick.setTwistChannel(3);
+		stick.setThrottleChannel(4);
+		stick.setZChannel(2);
+
+    restingTriggerVals = triggerCalibrate();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -55,6 +61,15 @@ public class DriveCommand extends Command {
 		}
 		return fThrottle;
   }
+
+  public double[] triggerCalibrate(){
+		double [] callVal = new double[2];
+		callVal[0] = stick.getTwist(); //left trigger
+		callVal[1] = stick.getThrottle(); //right trigger
+		System.out.println("Left Trigger: " + callVal[0]);
+		System.out.println("Right Trigger: " + callVal[1]);
+		return callVal;
+	}
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
