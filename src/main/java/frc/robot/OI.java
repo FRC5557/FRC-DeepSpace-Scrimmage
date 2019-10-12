@@ -13,7 +13,12 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.DriveTowardsHatchCommand;
-import frc.robot.commands.PlaceHatchCommand;
+import frc.robot.commands.retractHatchCommand;
+import frc.robot.commands.extendHatchCommand;
+import frc.robot.commands.MoveHabFowardCommand;
+
+import frc.robot.commands.MoveHabBackCommand;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -28,7 +33,7 @@ public class OI {
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
   public Joystick stick;
-  public Joystick stick2;
+  // public Joystick stick2;
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
@@ -36,19 +41,36 @@ public class OI {
   //// TRIGGERING COMMANDS WITH BUTTONS
   // Once you have a button, it's trivial to bind it to a button in one of
   // three ways:
-  JoystickButton placeHatchButton;
-  JoystickButton toggleAutoDrive;
-  JoystickButton toggleControllerDrive;
-  DriveTowardsHatchCommand hatchCommand;
-  DriveCommand driveCommand;
+  JoystickButton extendHatchButton;
+  JoystickButton  retractHatchButton; 
+
+  JoystickButton moveHabForwardButton;
+  JoystickButton moveHabBackButton;
 
   public OI() {
+    // ps4 controller
     stick = new Joystick(RobotMap.JOYSTICK_PORT);
-    stick2 = new Joystick(RobotMap.JOYSTICK_PORT_2);
+    // joystick
+    // stick2 = new Joystick(RobotMap.JOYSTICK_PORT_2);
+
+    extendHatchButton = new JoystickButton(stick, RobotMap.X_BUTTON);
+    retractHatchButton = new JoystickButton(stick, RobotMap.CIRCLE_BUTTON);
+
+    extendHatchButton.whenPressed(new extendHatchCommand());
+    retractHatchButton.whenPressed(new retractHatchCommand());
+
+
+    moveHabForwardButton = new JoystickButton(stick, RobotMap.R1);
+    moveHabForwardButton.whileHeld(new MoveHabFowardCommand());
+
+    moveHabBackButton = new JoystickButton(stick, RobotMap.R2);
+    moveHabBackButton.whileHeld(new MoveHabBackCommand());
+
+
 
     // placeHatchButton = new JoystickButton(stick, RobotMap.X_BUTTON);
-    toggleAutoDrive = new JoystickButton(stick, RobotMap.A_BUTTON);
-    toggleControllerDrive = new JoystickButton(stick, RobotMap.B_BUTTON);
+    // toggleAutoDrive = new JoystickButton(stick, RobotMap.A_BUTTON);
+    // toggleControllerDrive = new JoystickButton(stick, RobotMap.B_BUTTON);
     // Start the command when the button is pressed and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenPressed(new ExampleCommand());
@@ -57,7 +79,7 @@ public class OI {
     // button.whileHeld(new ExampleCommand());
     // placeHatchButton.whenPressed(new PlaceHatchCommand());
 
-    hatchCommand = new DriveTowardsHatchCommand();
+    // hatchCommand = new DriveTowardsHatchCommand();
     // driveCommand = new DriveCommand();
 
     // TODO: test this to see if it toggles and such

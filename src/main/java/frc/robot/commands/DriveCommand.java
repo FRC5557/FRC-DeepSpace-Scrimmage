@@ -19,6 +19,9 @@ public class DriveCommand extends Command {
   private Joystick stick = Robot.m_oi.stick;
   private DriveSubsystem drive = DriveSubsystem.getInstance();
 
+  double[] restingTriggerVals = new double[2];
+
+
   public DriveCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -35,7 +38,22 @@ public class DriveCommand extends Command {
   protected void execute() {
     // add drive command here
     // first thing it should do is read stick values
-    drive.drive(stick.getX(), stick.getY());
+     double turn = 0;
+		double throttle = 0;
+		//Controller Drive
+		turn = stick.getX() > 0 ? stick.getX()*1 : stick.getX()*1;
+		throttle = getTrigerThrottle(stick.getTwist(), stick.getThrottle());
+    drive.drive(turn, throttle);
+  }
+
+  public double getTrigerThrottle(double leftT, double rightT){
+		double fThrottle = 0;
+		if(rightT > restingTriggerVals[0]+.1){ //forward input will always take priority over reverse input
+			fThrottle = (rightT*(1/1.6)+.30);
+		}else if(leftT > restingTriggerVals[1]){
+			fThrottle = -(leftT*(1/1.6)+.45); //backward has slightly higher offset because motors are slower backwards
+		}
+		return fThrottle;
   }
 
   // Make this return true when this Command no longer needs to run execute()

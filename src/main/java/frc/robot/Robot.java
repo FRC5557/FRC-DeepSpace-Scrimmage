@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,6 +32,8 @@ public class Robot extends TimedRobot {
   Command driveCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+  Compressor compressor;
+
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -44,6 +47,7 @@ public class Robot extends TimedRobot {
     // MotionProfile m = new MotionProfile();
     // m.autoNotifier.startPeriodic(0.05);
     // driveCommand = m_oi.driveCommand;
+    compressor = new Compressor(RobotMap.COMPRESSOR_PORT);
   }
 
   /**
@@ -89,7 +93,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
@@ -99,9 +102,10 @@ public class Robot extends TimedRobot {
      */
 
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
+    // if (m_autonomousCommand != null) {
+    //   m_autonomousCommand.start();
+    // }
+    teleopInit();
   }
 
   /**
@@ -109,7 +113,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
+    // Scheduler.getInstance().run();
+    teleopPeriodic();
   }
 
   @Override
@@ -125,6 +130,8 @@ public class Robot extends TimedRobot {
     // DriveCommand d = new DriveCommand();
     // d.start();
 
+    compressor.setClosedLoopControl(true);
+    
   }
 
   /**

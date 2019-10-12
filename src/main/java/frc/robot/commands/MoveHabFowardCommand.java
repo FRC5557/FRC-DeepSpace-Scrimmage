@@ -7,20 +7,17 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.subsystems.HabMotorSubsystem;
 
-public class DriveElevatorCommand extends Command {
+public class MoveHabFowardCommand extends Command {
 
-  private Joystick stick = Robot.m_oi.stick;
-  private ElevatorSubsystem drive = ElevatorSubsystem.getInstance();
+  HabMotorSubsystem habSub = HabMotorSubsystem.getInstance();
 
-  public DriveElevatorCommand() {
+  public MoveHabFowardCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(ElevatorSubsystem.getInstance());
+    requires(HabMotorSubsystem.getInstance());
   }
 
   // Called just before this Command runs the first time
@@ -31,7 +28,7 @@ public class DriveElevatorCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    drive.drive(-stick.getZ());
+    habSub.moveForward();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -43,7 +40,7 @@ public class DriveElevatorCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    drive.drive(0);
+    habSub.stop();
   }
 
   // Called when another command which requires one or more of the same

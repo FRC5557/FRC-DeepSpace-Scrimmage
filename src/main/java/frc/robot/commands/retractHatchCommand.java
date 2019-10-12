@@ -8,43 +8,46 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.HatchPneumaticSubsystem;
 
-public class PlaceHatchCommand extends Command {
-  public PlaceHatchCommand() {
+public class retractHatchCommand extends Command {
+
+  HatchPneumaticSubsystem hatchSub = HatchPneumaticSubsystem.getInstance();
+
+
+  public retractHatchCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(HatchPneumaticSubsystem.getInstance());
 
-    // this will need to require the pneumatic / hatch arm subsystem
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    // make sure the hatch arm is open so that hatch doesnt fall out
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    // TODO: set the hatch to close to place the hatch
+    hatchSub.retractHatch();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    // return true so that the command only runs once :D
     return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    // possibly retract the hatch or some sort of action
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

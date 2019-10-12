@@ -11,44 +11,45 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.DriveElevatorCommand;
 
 /**
  * Add your docs here.
  */
-public class ElevatorSubsystem extends Subsystem {
+public class HabMotorSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private static ElevatorSubsystem instance = null;
+  private static HabMotorSubsystem instance = null;
 
-  private final WPI_TalonSRX elevatorTalonLeft;
-  private final WPI_TalonSRX elevatorTalonRight;
+  WPI_TalonSRX motor1 = new WPI_TalonSRX(RobotMap.HAB_MOTOR_1);
+  WPI_TalonSRX motor2 = new WPI_TalonSRX(RobotMap.HAB_MOTOR_2);
 
-
-  public static ElevatorSubsystem getInstance() {
-    if (instance == null) {
-      instance = new ElevatorSubsystem();
+  public static HabMotorSubsystem getInstance() {
+    if(instance == null) {
+      instance = new HabMotorSubsystem();
     }
     return instance;
   }
 
-  public ElevatorSubsystem() {
-    elevatorTalonLeft = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR_LEFT);
-    elevatorTalonRight = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR_RIGHT);
-
+  public void moveForward() {
+    motor1.set(.5);
+    motor2.set(.5);
   }
 
-  public void drive(double speed) {
-    elevatorTalonLeft.set(speed);
-    elevatorTalonRight.set(speed);
-
+  public void moveBack() {
+    motor1.set(-.5);
+    motor2.set(-.5);
   }
+
+  public void stop() {
+    motor1.set(0);
+    motor2.set(0);
+  }
+
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new DriveElevatorCommand());
   }
 }

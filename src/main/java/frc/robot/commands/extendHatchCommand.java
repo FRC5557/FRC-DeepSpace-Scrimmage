@@ -7,20 +7,17 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.subsystems.HatchPneumaticSubsystem;
 
-public class DriveElevatorCommand extends Command {
+public class extendHatchCommand extends Command {
 
-  private Joystick stick = Robot.m_oi.stick;
-  private ElevatorSubsystem drive = ElevatorSubsystem.getInstance();
-
-  public DriveElevatorCommand() {
+  HatchPneumaticSubsystem hatchSub = HatchPneumaticSubsystem.getInstance();
+  
+  public extendHatchCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(ElevatorSubsystem.getInstance());
+    requires(HatchPneumaticSubsystem.getInstance());
   }
 
   // Called just before this Command runs the first time
@@ -31,19 +28,18 @@ public class DriveElevatorCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    drive.drive(-stick.getZ());
+    hatchSub.extendHatch();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    drive.drive(0);
   }
 
   // Called when another command which requires one or more of the same

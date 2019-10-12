@@ -28,14 +28,30 @@ public class RobotMap {
   public static final int RIGHT_REAR_MOTOR = 1;
 
 
-  // XBOX CONTROLLER STUFF
-  public static final int X_BUTTON = 3; // X
-  public static final int Y_BUTTON = 4; // X
-  public static final int A_BUTTON = 1; // X
-  public static final int B_BUTTON = 2; // X
+  // PS4 CONTROLLER STUFF
+  public static final int X_BUTTON = 2; // X
+  public static final int CIRCLE_BUTTON = 3; // X
+  public static final int TRIANGLE_BUTTON = 4; // X
+  public static final int SQUARE_BUTTON = 1; // X
+
+  public static final int R1 = 6;
+  public static final int R2 = 5;
 
 
-  public static final int ELEVATOR_MOTOR = 5;
+  public static final int ELEVATOR_MOTOR_LEFT = 5;
+  public static final int ELEVATOR_MOTOR_RIGHT = 6;
+
+  public static final int HAB_MOTOR_1 = 7;
+  public static final int HAB_MOTOR_2 = 8;
+
+  public static final int COMPRESSOR_PORT = 1;
+
+  public static final int EXTEND_HATCH_PORT = 1;
+  public static final int RETRACT_HATCH_PORT = 2;
+
+  public static final int HAB_SOLENOID_PORT_1 = 3;
+  public static final int HAB_SOLENOID_PORT_2 = 4;
+
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

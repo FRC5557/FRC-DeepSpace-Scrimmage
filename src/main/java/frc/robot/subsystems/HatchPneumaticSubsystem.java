@@ -7,48 +7,41 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.DriveElevatorCommand;
 
 /**
  * Add your docs here.
  */
-public class ElevatorSubsystem extends Subsystem {
+public class HatchPneumaticSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private static ElevatorSubsystem instance = null;
+  private static HatchPneumaticSubsystem instance = null;
 
-  private final WPI_TalonSRX elevatorTalonLeft;
-  private final WPI_TalonSRX elevatorTalonRight;
+  DoubleSolenoid hatchSolenoid = new DoubleSolenoid(RobotMap.EXTEND_HATCH_PORT, RobotMap.RETRACT_HATCH_PORT);
 
-
-  public static ElevatorSubsystem getInstance() {
-    if (instance == null) {
-      instance = new ElevatorSubsystem();
+  public static HatchPneumaticSubsystem getInstance() {
+    if(instance == null) {
+      instance = new HatchPneumaticSubsystem();
     }
     return instance;
   }
 
-  public ElevatorSubsystem() {
-    elevatorTalonLeft = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR_LEFT);
-    elevatorTalonRight = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR_RIGHT);
-
+  public void extendHatch() {
+    hatchSolenoid.set(DoubleSolenoid.Value.kForward);
   }
 
-  public void drive(double speed) {
-    elevatorTalonLeft.set(speed);
-    elevatorTalonRight.set(speed);
-
+  public void retractHatch() {
+    hatchSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
+
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new DriveElevatorCommand());
   }
 }
