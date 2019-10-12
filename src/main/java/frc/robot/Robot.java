@@ -18,6 +18,8 @@ import frc.robot.MotionProfiles.TrapezoidProfile;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.DriveElevatorCommand;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.HabPneumaticSubsystem;
+import frc.robot.subsystems.HatchPneumaticSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -76,6 +78,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+    HabPneumaticSubsystem.getInstance().retractHab();
+    HatchPneumaticSubsystem.getInstance().retractHatch();
   }
 
   @Override
@@ -139,6 +143,9 @@ public class Robot extends TimedRobot {
     // compressor.setClosedLoopControl(true);
     
   }
+
+
+ 
 
   /**
    * This function is called periodically during operator control.
