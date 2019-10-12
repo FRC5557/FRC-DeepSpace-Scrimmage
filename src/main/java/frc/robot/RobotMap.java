@@ -39,18 +39,18 @@ public class RobotMap {
 
 
   public static final int ELEVATOR_MOTOR_LEFT = 5;
-  public static final int ELEVATOR_MOTOR_RIGHT = 6;
+  public static final int ELEVATOR_MOTOR_RIGHT = 8;
 
   public static final int HAB_MOTOR_1 = 7;
-  public static final int HAB_MOTOR_2 = 8;
+  public static final int HAB_MOTOR_2 = 6;
 
   public static final int COMPRESSOR_PORT = 1;
 
-  public static final int EXTEND_HATCH_PORT = 1;
-  public static final int RETRACT_HATCH_PORT = 2;
+  public static final int EXTEND_HATCH_PORT = 0;
+  public static final int RETRACT_HATCH_PORT = 1;
 
-  public static final int HAB_SOLENOID_PORT_1 = 3;
-  public static final int HAB_SOLENOID_PORT_2 = 4;
+  public static final int HAB_SOLENOID_PORT_1 = 2;
+  public static final int HAB_SOLENOID_PORT_2 = 3;
 
 
   // If you are using multiple modules, make sure to define both the port

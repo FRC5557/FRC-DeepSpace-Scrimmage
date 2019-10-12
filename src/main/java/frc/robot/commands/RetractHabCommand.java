@@ -8,16 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.HabMotorSubsystem;
+import frc.robot.subsystems.HabPneumaticSubsystem;
 
-public class MoveHabFowardCommand extends Command {
+public class RetractHabCommand extends Command {
 
-  HabMotorSubsystem habSub = HabMotorSubsystem.getInstance();
+  HabPneumaticSubsystem habSub = HabPneumaticSubsystem.getInstance();
 
-  public MoveHabFowardCommand() {
+  public RetractHabCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(HabMotorSubsystem.getInstance());
+    requires(HabPneumaticSubsystem.getInstance());
   }
 
   // Called just before this Command runs the first time
@@ -28,19 +28,18 @@ public class MoveHabFowardCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    habSub.moveForward();
+    habSub.retractHab();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    habSub.stop();
   }
 
   // Called when another command which requires one or more of the same

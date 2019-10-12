@@ -13,10 +13,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.DriveTowardsHatchCommand;
+import frc.robot.commands.ExtendHabCommand;
 import frc.robot.commands.retractHatchCommand;
 import frc.robot.commands.extendHatchCommand;
-import frc.robot.commands.MoveHabFowardCommand;
-
+import frc.robot.commands.MoveHabForwardCommand;
+import frc.robot.commands.RetractHabCommand;
 import frc.robot.commands.MoveHabBackCommand;
 
 
@@ -47,6 +48,9 @@ public class OI {
   JoystickButton moveHabForwardButton;
   JoystickButton moveHabBackButton;
 
+  JoystickButton extendHabButton;
+  JoystickButton retractHabButton;
+
   public OI() {
     // ps4 controller
     stick = new Joystick(RobotMap.JOYSTICK_PORT);
@@ -61,10 +65,16 @@ public class OI {
 
 
     moveHabForwardButton = new JoystickButton(stick, RobotMap.R1);
-    moveHabForwardButton.whileHeld(new MoveHabFowardCommand());
+    moveHabForwardButton.whileHeld(new MoveHabForwardCommand());
 
     moveHabBackButton = new JoystickButton(stick, RobotMap.R2);
     moveHabBackButton.whileHeld(new MoveHabBackCommand());
+
+    extendHabButton = new JoystickButton(stick, RobotMap.TRIANGLE_BUTTON);
+    extendHabButton.whenPressed(new ExtendHabCommand());
+
+    retractHabButton = new JoystickButton(stick, RobotMap.SQUARE_BUTTON);
+    retractHabButton.whenPressed(new RetractHabCommand());
 
 
 

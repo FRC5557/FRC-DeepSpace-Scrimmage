@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import frc.robot.MotionProfiles.MotionProfile;
 import frc.robot.MotionProfiles.TrapezoidProfile;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.DriveElevatorCommand;
 import frc.robot.subsystems.DriveSubsystem;
 
 /**
@@ -30,6 +31,7 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
   Command driveCommand;
+  Command driveElevatorCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   Compressor compressor;
@@ -46,8 +48,10 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto mode", m_chooser);
     // MotionProfile m = new MotionProfile();
     // m.autoNotifier.startPeriodic(0.05);
-    // driveCommand = m_oi.driveCommand;
-    compressor = new Compressor(RobotMap.COMPRESSOR_PORT);
+    driveCommand = new DriveCommand();
+    driveElevatorCommand = new DriveElevatorCommand();
+    
+    // compressor = new Compressor(RobotMap.COMPRESSOR_PORT);
   }
 
   /**
@@ -127,10 +131,12 @@ public class Robot extends TimedRobot {
       driveCommand.start();
     }
 
-    // DriveCommand d = new DriveCommand();
-    // d.start();
+    if(driveElevatorCommand != null) {
+      driveElevatorCommand.start();
+    }
+   
 
-    compressor.setClosedLoopControl(true);
+    // compressor.setClosedLoopControl(true);
     
   }
 

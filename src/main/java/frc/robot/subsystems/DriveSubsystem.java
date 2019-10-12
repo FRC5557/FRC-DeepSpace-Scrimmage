@@ -56,6 +56,7 @@ public class DriveSubsystem extends Subsystem {
     rightGroup = new SpeedControllerGroup(rightFrontTalon, rightRearTalon);
     difDrive = new DifferentialDrive(leftGroup, rightGroup);
 
+    difDrive.setSafetyEnabled(false);
     // possible mehcanum drive
     // https://wpilib.screenstepslive.com/s/currentCS/m/java/l/599704-driving-a-robot-using-mecanum-drive
     // MecanumDrive x = new MecanumDrive(leftFrontTalon, leftRearTalon,
