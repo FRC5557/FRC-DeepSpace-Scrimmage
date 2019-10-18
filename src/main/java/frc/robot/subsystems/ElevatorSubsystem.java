@@ -25,7 +25,6 @@ public class ElevatorSubsystem extends Subsystem {
   private final WPI_TalonSRX elevatorTalonLeft;
   private final WPI_TalonSRX elevatorTalonRight;
 
-
   public static ElevatorSubsystem getInstance() {
     if (instance == null) {
       instance = new ElevatorSubsystem();
@@ -40,7 +39,7 @@ public class ElevatorSubsystem extends Subsystem {
   }
 
   public void drive(double speed) {
-    elevatorTalonLeft.set(-speed*.9);
+    elevatorTalonLeft.set(-speed);
     elevatorTalonRight.set(speed);
 
   }
@@ -49,6 +48,6 @@ public class ElevatorSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new DriveElevatorCommand());
+    // setDefaultCommand(new DriveElevatorCommand());
   }
 }

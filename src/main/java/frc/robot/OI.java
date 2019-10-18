@@ -8,18 +8,15 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Watchdog;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.DriveCommand;
-import frc.robot.commands.DriveTowardsHatchCommand;
 import frc.robot.commands.ExtendHabCommand;
-import frc.robot.commands.retractHatchCommand;
-import frc.robot.commands.extendHatchCommand;
+import frc.robot.commands.MoveHabBackCommand;
 import frc.robot.commands.MoveHabForwardCommand;
 import frc.robot.commands.RetractHabCommand;
-import frc.robot.commands.MoveHabBackCommand;
-
+import frc.robot.commands.TestElevatorLeftCommand;
+import frc.robot.commands.TestElevatorRightCommand;
+import frc.robot.commands.extendHatchCommand;
+import frc.robot.commands.retractHatchCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -43,13 +40,16 @@ public class OI {
   // Once you have a button, it's trivial to bind it to a button in one of
   // three ways:
   JoystickButton extendHatchButton;
-  JoystickButton  retractHatchButton; 
+  JoystickButton retractHatchButton;
 
   JoystickButton moveHabForwardButton;
   JoystickButton moveHabBackButton;
 
   JoystickButton extendHabButton;
   JoystickButton retractHabButton;
+
+  JoystickButton testElevatorLeftButton;
+  JoystickButton testElevatorRightButton;
 
   public OI() {
     // ps4 controller
@@ -63,7 +63,6 @@ public class OI {
     extendHatchButton.whenPressed(new extendHatchCommand());
     retractHatchButton.whenPressed(new retractHatchCommand());
 
-
     moveHabForwardButton = new JoystickButton(stick, RobotMap.R1);
     moveHabForwardButton.whileHeld(new MoveHabForwardCommand());
 
@@ -76,7 +75,11 @@ public class OI {
     retractHabButton = new JoystickButton(stick, RobotMap.SQUARE_BUTTON);
     retractHabButton.whenPressed(new RetractHabCommand());
 
+    testElevatorLeftButton = new JoystickButton(stick, RobotMap.DPAD_LEFT);
+    testElevatorLeftButton.whenPressed(new TestElevatorLeftCommand());
 
+    testElevatorRightButton = new JoystickButton(stick, RobotMap.DPAD_RIGHT);
+    testElevatorRightButton.whenPressed(new TestElevatorRightCommand());
 
     // placeHatchButton = new JoystickButton(stick, RobotMap.X_BUTTON);
     // toggleAutoDrive = new JoystickButton(stick, RobotMap.A_BUTTON);

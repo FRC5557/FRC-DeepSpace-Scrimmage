@@ -27,16 +27,17 @@ public class RobotMap {
   public static final int RIGHT_FRONT_MOTOR = 2;// Encoder on this one, counts up when driving forward
   public static final int RIGHT_REAR_MOTOR = 1;
 
-
   // PS4 CONTROLLER STUFF
   public static final int X_BUTTON = 2; // X
   public static final int CIRCLE_BUTTON = 3; // X
   public static final int TRIANGLE_BUTTON = 4; // X
-  public static final int SQUARE_BUTTON = 1; // X
+  public static final int SQUARE_BUTTON = 1; // X6;
+
+  public static final int DPAD_LEFT = 5;
+  public static final int DPAD_RIGHT = 6;
 
   public static final int R1 = 6;
   public static final int R2 = 5;
-
 
   public static final int ELEVATOR_MOTOR_LEFT = 5;
   public static final int ELEVATOR_MOTOR_RIGHT = 8;
@@ -51,7 +52,6 @@ public class RobotMap {
 
   public static final int HAB_SOLENOID_PORT_1 = 2;
   public static final int HAB_SOLENOID_PORT_2 = 3;
-
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
