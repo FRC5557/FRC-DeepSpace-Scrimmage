@@ -76,10 +76,10 @@ public class OI {
     retractHabButton.whenPressed(new RetractHabCommand());
 
     testElevatorLeftButton = new JoystickButton(stick, RobotMap.DPAD_LEFT);
-    testElevatorLeftButton.whenPressed(new TestElevatorLeftCommand());
+    testElevatorLeftButton.whileHeld(new TestElevatorLeftCommand());
 
     testElevatorRightButton = new JoystickButton(stick, RobotMap.DPAD_RIGHT);
-    testElevatorRightButton.whenPressed(new TestElevatorRightCommand());
+    testElevatorRightButton.whileHeld(new TestElevatorRightCommand());
 
     // placeHatchButton = new JoystickButton(stick, RobotMap.X_BUTTON);
     // toggleAutoDrive = new JoystickButton(stick, RobotMap.A_BUTTON);
