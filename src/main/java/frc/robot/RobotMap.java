@@ -44,7 +44,7 @@ public class RobotMap {
   public static final int HAB_MOTOR_1 = 7;
   public static final int HAB_MOTOR_2 = 6;
 
-  public static final int COMPRESSOR_PORT = 1;
+  public static final int COMPRESSOR_PORT = 0;
 
   public static final int EXTEND_HATCH_PORT = 0;
   public static final int RETRACT_HATCH_PORT = 1;

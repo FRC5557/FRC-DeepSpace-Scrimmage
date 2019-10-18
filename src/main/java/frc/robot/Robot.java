@@ -53,7 +53,7 @@ public class Robot extends TimedRobot {
     driveCommand = new DriveCommand();
     driveElevatorCommand = new DriveElevatorCommand();
     
-    // compressor = new Compressor(RobotMap.COMPRESSOR_PORT);
+    compressor = new Compressor(RobotMap.COMPRESSOR_PORT);
   }
 
   /**
@@ -78,8 +78,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    HabPneumaticSubsystem.getInstance().retractHab();
-    HatchPneumaticSubsystem.getInstance().retractHatch();
+    HabPneumaticSubsystem.getInstance().extendHab();
+    HatchPneumaticSubsystem.getInstance().extendHatch();
+
+    compressor.setClosedLoopControl(false);
   }
 
   @Override
@@ -140,7 +142,7 @@ public class Robot extends TimedRobot {
     }
    
 
-    // compressor.setClosedLoopControl(true);
+    compressor.setClosedLoopControl(true);
     
   }
 

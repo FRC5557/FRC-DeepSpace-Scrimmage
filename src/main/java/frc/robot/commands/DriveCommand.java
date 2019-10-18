@@ -49,7 +49,7 @@ public class DriveCommand extends Command {
 		//Controller Drive
 		turn = stick.getX() > 0 ? stick.getX()*1 : stick.getX()*1;
 		throttle = getTrigerThrottle(stick.getTwist(), stick.getThrottle());
-    drive.drive(turn, throttle);
+    drive.drive(-1*turn, throttle);
   }
 
   public double getTrigerThrottle(double leftT, double rightT){
@@ -61,6 +61,8 @@ public class DriveCommand extends Command {
 		}
 		return fThrottle;
   }
+
+
 
   public double[] triggerCalibrate(){
 		double [] callVal = new double[2];

@@ -40,7 +40,7 @@ public class ElevatorSubsystem extends Subsystem {
   }
 
   public void drive(double speed) {
-    elevatorTalonLeft.set(speed);
+    elevatorTalonLeft.set(-speed*.9);
     elevatorTalonRight.set(speed);
 
   }
