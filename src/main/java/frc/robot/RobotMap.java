@@ -33,8 +33,8 @@ public class RobotMap {
   public static final int TRIANGLE_BUTTON = 4; // X
   public static final int SQUARE_BUTTON = 1; // X6;
 
-  public static final int DPAD_LEFT = 5;
-  public static final int DPAD_RIGHT = 6;
+  public static final int DPAD_LEFT = 11;
+  public static final int DPAD_RIGHT = 12;
 
   public static final int R1 = 6;
   public static final int R2 = 5;

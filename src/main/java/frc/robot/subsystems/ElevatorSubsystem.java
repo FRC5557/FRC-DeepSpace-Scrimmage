@@ -11,7 +11,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.DriveElevatorCommand;
 
 /**
  * Add your docs here.
@@ -40,6 +39,16 @@ public class ElevatorSubsystem extends Subsystem {
 
   public void drive(double speed) {
     elevatorTalonLeft.set(-speed);
+    elevatorTalonRight.set(speed);
+
+  }
+
+  public void driveLeft(double speed) {
+    elevatorTalonLeft.set(-speed);
+
+  }
+
+  public void driveRight(double speed) {
     elevatorTalonRight.set(speed);
 
   }

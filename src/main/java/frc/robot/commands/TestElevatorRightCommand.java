@@ -27,7 +27,7 @@ public class TestElevatorRightCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    drive.drive(.5);
+    drive.driveRight(.5);
   }
 
   // Make this return true when this Command no longer needs to run execute()
