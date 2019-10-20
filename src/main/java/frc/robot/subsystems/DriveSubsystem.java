@@ -67,6 +67,10 @@ public class DriveSubsystem extends Subsystem {
 		difDrive.arcadeDrive(throttle,turn);
   }
 
+  public void resetEncoders() {
+    // reset encoder vals here
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
